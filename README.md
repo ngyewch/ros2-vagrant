@@ -25,6 +25,8 @@ This command builds the Vagrant box (if it has not been built previously) and st
 
 From the Vagrant box:
 ```
+#### Create source directory and check out source repositories
+
 mkdir -p src && \
     cd src && \
         git clone https://github.com/ros2/examples.git && \
@@ -33,8 +35,19 @@ mkdir -p src && \
             cd .. && \
         cd ..
 
+#### Resolve and install dependencies 
+
 rosdep install -i --from-path src --rosdistro ${ROS_DISTRO} -y
+
+#### Build the workspace
+
 colcon build
+```
+
+```
+#### Create script to install dependencies 
+
+rosdep install --simulate --reinstall --from-path src > install_dependencies.sh
 ```
 
 This creates artifacts in the `dev_ws/install/` directory. 
