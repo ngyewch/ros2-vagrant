@@ -1,0 +1,4 @@
+dev_ws/
+!dev_ws/.placeholder
+vagrant/.vagrant/
+*.log
