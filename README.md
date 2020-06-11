@@ -37,17 +37,11 @@ mkdir -p src && \
 
 #### Resolve and install dependencies 
 
-rosdep install -i --from-path src --rosdistro ${ROS_DISTRO} -y
+## ACTION customize this to your package(s)
+#PACKAGES_UP_TO=turtlebot3_unity_bringup
+PACKAGES_UP_TO="examples_rclcpp_minimal_publisher examples_rclcpp_minimal_subscriber"
 
-#### Build the workspace
-
-colcon build
-```
-
-```
-#### Create script to install dependencies 
-
-rosdep install --simulate --reinstall --from-path src > install_dependencies.sh
+/vagrant/build.py ${PACKAGES_UP_TO}
 ```
 
 This creates artifacts in the `dev_ws/install/` directory. 

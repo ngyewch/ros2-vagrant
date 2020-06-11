@@ -1,10 +1,8 @@
 FROM ros2-vagrant/ros-dashing-base:latest
 
-RUN apt-get install -y --no-install-recommends \
-    sudo
-
-COPY install_dependencies.sh .
-RUN sh ./install_dependencies.sh
+COPY apt_pkgs .
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends $(cat apt_pkgs)
 
 COPY ros_entrypoint.sh .
 
